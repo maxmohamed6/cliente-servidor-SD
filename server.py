@@ -11,11 +11,13 @@ with s.socket(s.AF_INET, s.SOCK_STREAM) as server:
 
     server.listen() #garantir a disponibilidade de entrada de cliente
 
+    print("O servidor está online e aguardando...")
+
     connection, address = server.accept()
 
     print(f"Conectado por : {address}")
 
-    data = connection.recv(1024)
+    data = connection.recv(1024).decode('utf-8')
 
     connection.send(data)
 
